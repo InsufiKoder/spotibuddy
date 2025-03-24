@@ -18,4 +18,4 @@ Run **npm i** to install the project's dependencies.
 
 Run **npm start** to start the webserver. It will be available at **localhost:3000**.
 
-You *might* get banned from using this, so it might be better using an alt account.
+You *might* get banned from using this, so it *might* be better using an alt account.
