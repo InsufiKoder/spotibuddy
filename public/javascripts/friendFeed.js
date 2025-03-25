@@ -6,11 +6,10 @@ const contextNameElement = document.getElementById("contextName");
 const timestampElement = document.getElementById("timestamp");
 const loadingSpinnerElement = document.getElementById("loadingSpinner");
 
-if(!userNameElement == ""){
-  loadingSpinnerElement.style.padding = "50px 0px 0px 0px";
-}
-
 async function fetchFriendFeed() {
+  if(!userNameElement == ""){
+  loadingSpinnerElement.style.padding = "50px 0px 0px 0px";
+  }
   loadingSpinnerElement.style.display = "block";
   try {
     const response = await fetch("/api/getFriendFeed");
