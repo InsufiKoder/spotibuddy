@@ -4,16 +4,21 @@ const trackNameElement = document.getElementById("trackName");
 const artistNameElement = document.getElementById("artistName");
 const contextNameElement = document.getElementById("contextName");
 const timestampElement = document.getElementById("timestamp");
+const loadingSpinnerElement = document.getElementById("loadingSpinner");
+
+if(!userNameElement == ""){
+  loadingSpinnerElement.style.padding = "50px 0px 0px 0px";
+}
 
 async function fetchFriendFeed() {
-  document.getElementById("loadingSpinner").style.display = "block";
+  loadingSpinnerElement.style.display = "block";
   try {
     const response = await fetch("/api/getFriendFeed");
     if (!response.ok) {
-      document.getElementById("loadingSpinner").style.display = "none";
+      loadingSpinnerElement.style.display = "none";
       throw new Error(`HTTP error! status: ${response.status}`);
     } else {
-      document.getElementById("loadingSpinner").style.display = "none";
+      loadingSpinnerElement.style.display = "none";
 
       const friendFeedArray = await response.json();
       // 0
