@@ -1,5 +1,5 @@
 # SpotiBuddy
-An express.js app that displays friend status. This will be the initial and last commit i will make on this project (If we don't count the readme commit).
+An express.js app that displays friend status. This will be the initial and last commit i will make on this project (Maybe some small edits/fixes).
 
 The code is messy, i know.
 
