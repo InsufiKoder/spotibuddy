@@ -4,17 +4,24 @@ const trackNameElement = document.getElementById("trackName");
 const artistNameElement = document.getElementById("artistName");
 const contextNameElement = document.getElementById("contextName");
 const timestampElement = document.getElementById("timestamp");
-const loadingSpinnerElement = document.getElementById("loadingSpinner");
+const fetchButtonElement = document.getElementById("fetchButton");
+const errorElement = document.getElementById("error");
 
 async function fetchFriendFeed() {
-  loadingSpinnerElement.style.display = "block";
+  errorElement.style.display = "none";
+  fetchButtonElement.disabled = true;
+  fetchButtonElement.innerHTML = "Please wait...";
   try {
     const response = await fetch("/api/getFriendFeed");
     if (!response.ok) {
-      loadingSpinnerElement.style.display = "none";
+      fetchButtonElement.disabled = false;
+      fetchButtonElement.innerHTML = "Click to refresh.";
+      errorElement.style.display = "block";
+      errorElement.innerHTML = `HTTP error! status: ${response.status}`;
       throw new Error(`HTTP error! status: ${response.status}`);
     } else {
-      loadingSpinnerElement.style.display = "none";
+      fetchButtonElement.disabled = false;
+      fetchButtonElement.innerHTML = "Click to refresh.";
 
       const friendFeedArray = await response.json();
       // 0
@@ -71,11 +78,15 @@ async function fetchFriendFeed() {
 
       userImageElement.src = userImageUrl;
       userNameElement.textContent = userName;
-      trackNameElement.textContent = "Track: " + trackName;
-      artistNameElement.textContent = "By: " + artistName;
+      trackNameElement.textContent = trackName;
+      artistNameElement.textContent = artistName;
       contextNameElement.textContent = contextName;
 
-      if (convertDate(timestamp) <= 15) {
+      const differenceInMinutes = Math.floor(
+        (Date.now() - timestamp) / (1000 * 60)
+      );
+
+      if (differenceInMinutes <= 10) {
         timestampElement.textContent = "Online";
       } else {
         timestampElement.textContent = getTimeDifference(timestamp);

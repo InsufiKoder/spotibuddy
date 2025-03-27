@@ -21,12 +21,8 @@
         <h6 id="contextName" style="padding-top: 5px;"></h6>
         <h6 id="timestamp" style="padding-top: 2px;"></h6>
       </div> <hr>
-      <button onclick="fetchFriendFeed()" type="button" class="btn btn-light">Click to refresh.</button> <br>
-    </div>
-    <div id="spinnerDiv" class="position-absolute top-50 start-50 translate-middle" style="padding-top: 300px;">
-      <div id="loadingSpinner" class="spinner-border m-5" role="status" style="display: none;">
-        <span class="visually-hidden">Loading...</span>
-      </div>
+      <button id="fetchButton" onclick="fetchFriendFeed()" type="button" class="btn btn-light">Click to refresh.</button> <br>
+      <h6 id="error" style="display: none;"></h6>
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
